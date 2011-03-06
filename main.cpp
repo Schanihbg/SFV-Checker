@@ -95,10 +95,13 @@ int main(int iArg, char *sArg[])
                             bad++;
                             cout << "BAD!" << endl;
 
-                            int result;
-                            string oldname = ss.str();
-                            string newname = "TEMP";
-                            result = rename( oldname.c_str() , newname.c_str() );
+
+                            string oldname = file;
+                            string newname = file;
+                                    newname += "_BAD_OR_INCOMPLETE";
+
+                            int result = rename( oldname.c_str() , newname.c_str() );
+
                             if ( result == 0)
                                 puts ("File renamed");
                             else
