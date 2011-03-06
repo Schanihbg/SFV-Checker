@@ -96,10 +96,14 @@ int main(int iArg, char *sArg[])
                             cout << "BAD!" << endl;
 
                             int result;
-                            char* oldname;
-                            ss >> oldname;
-                            char newname[] = "TEMP";
-                            result = rename( oldname , newname );
+                            string oldname = ss.str();
+                            string newname = "TEMP";
+                            result = rename( oldname.c_str() , newname.c_str() );
+                            if ( result == 0)
+                                puts ("File renamed");
+                            else
+                                perror("Error renaming file");
+
                         }
 
                         ss.clear();
